@@ -12,9 +12,9 @@ struct Movie {
 class MovieCollection {
 public:
     void add(const std::string &name, double rating);
-    void finalize();
+    void sorting();
     void printAll() const;
-    std::vector<Movie> findByPrefix(const std::string &prefix) const;
+    std::vector<Movie> findWithPrefix(const std::string &prefix) const;
 
 private:
     std::vector<Movie> movies_;
