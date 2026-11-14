@@ -50,7 +50,7 @@ int main(int argc, char** argv){
     }
 
     movieFile.close();
-    collection.finalize();
+    collection.sorting();
 
     if (argc == 2){
             //print all the movies in ascending alphabetical order of movie names
