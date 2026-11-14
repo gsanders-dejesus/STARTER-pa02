@@ -1,5 +1,6 @@
 #include "movies.h"
 #include <algorithm>
+#include <iomanip>
 #include <iostream>
 
 void MovieCollection::add(const std::string &name, double rating) {
@@ -15,8 +16,11 @@ void MovieCollection::sorting(){
 }
 
 void MovieCollection::printAll() const{
-    std::cout << std::fixed;
-    std::cout.precision(1);
+    std::cout << std::fixed; << std::setprecision(1);
+
+    vector<Movie> best;
+    vector<string> bestPrefixes;
+    
     for(const Movie &m : movies_){
         std::cout << m.name << ", " << m.rating << "\n";
     }
