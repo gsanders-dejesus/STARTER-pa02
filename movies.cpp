@@ -4,7 +4,7 @@
 #include <iostream>
 
 void MovieCollection::add(const std::string &name, double rating) {
-    movies_.push_back({name, rating});
+    movie.push_back({name, rating});
 }
 
 bool compareMovies(Movie a, Movie b){
@@ -12,16 +12,16 @@ bool compareMovies(Movie a, Movie b){
 }
 
 void MovieCollection::sorting(){
-    std::sort(movies_.begin(), movies_.end(), compareMovies);
+    std::sort(movie.begin(), movie.end(), compareMovies);
 }
 
 void MovieCollection::printAll() const{
-    std::cout << std::fixed; << std::setprecision(1);
+    std::cout << std::fixed << std::setprecision(1);
 
-    vector<Movie> best;
-    vector<string> bestPrefixes;
+    //std::vector<Movie> best;
+    //std::vector<std::string> bestPrefixes;
     
-    for(const Movie &m : movies_){
+    for(const Movie &m : movie){
         std::cout << m.name << ", " << m.rating << "\n";
     }
 }
@@ -30,9 +30,9 @@ void MovieCollection::printAll() const{
 std::vector<Movie> MovieCollection::findWithPrefix(const std::string &prefix) const{
     std::vector<Movie> result;
 
-    for(int i = 0; i < movies_.size(); i++){
-        if(movies_[i].name.substr(0, prefix.length()) == prefix){
-            result.push_back(movies_[i]);
+    for(int i = 0; i < movie.size(); i++){
+        if(movie[i].name.substr(0, prefix.length()) == prefix){
+            result.push_back(movie[i]);
         }
     }
 
