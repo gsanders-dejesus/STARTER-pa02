@@ -1,6 +1,6 @@
 // Winter'24
 // Instructor: Diba Mirza
-// Student name: 
+// Student name: Gabriel Sanders-DeJesus
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -75,8 +75,15 @@ int main(int argc, char** argv){
     //  For each prefix,
     //  Find all movies that have that prefix and store them in an appropriate data structure
     //  If no movie with that prefix exists print the following message
+
+    cout << fixed;
+    cout.precision(1);
+
+    vector<Movie> best;
+    vector<string> bestPrefixes;
+
     for(const string &prefix : prefixes){
-        vector<Movie> matches = collection.findByPrefix(prefix);
+        vector<Movie> matches = collection.findWithPrefix(prefix);
         if(matches.empty()){
             cout << "No movies found with prefix " << prefix << "\n";
             continue;
