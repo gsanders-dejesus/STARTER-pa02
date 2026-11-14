@@ -17,7 +17,7 @@ public:
     std::vector<Movie> findWithPrefix(const std::string &prefix) const;
 
 private:
-    std::vector<Movie> movies_;
+    std::vector<Movie> movie;
 };
 
 #endif
