@@ -35,6 +35,8 @@ int main(int argc, char** argv){
     }
   
     // Create an object of a STL data-structure to store all the movies
+    MovieCollection collection;
+    
 
     string line, movieName;
     double movieRating;
@@ -44,12 +46,15 @@ int main(int argc, char** argv){
             // to construct your Movie objects
             // cout << movieName << " has rating " << movieRating << endl;
             // insert elements into your data structure
+            collection.add(movieName, movieRating);
     }
 
     movieFile.close();
+    collection.finalize();
 
     if (argc == 2){
             //print all the movies in ascending alphabetical order of movie names
+            collection.printAll();
             return 0;
     }
 
@@ -70,12 +75,30 @@ int main(int argc, char** argv){
     //  For each prefix,
     //  Find all movies that have that prefix and store them in an appropriate data structure
     //  If no movie with that prefix exists print the following message
-    cout << "No movies found with prefix "<<"<replace with prefix>" << endl;
+    for(const string &prefix : prefixes){
+        vector<Movie> matches = collection.findByPrefix(prefix);
+        if(matches.empty()){
+            cout << "No movies found with prefix " << prefix << "\n";
+            continue;
+        }
+        for(const Movie &m : matches){
+            cout << m.name << ", " << m.rating << "\n";
+        }
+        cout << "\n";
+        best.push_back(matches.front());
+        bestPrefixes.push_back(prefix);
+    }
+        
+    //cout << "No movies found with prefix "<<"<replace with prefix>" << endl;
 
     //  For each prefix,
     //  Print the highest rated movie with that prefix if it exists.
-    cout << "Best movie with prefix " << "<replace with prefix>" << " is: " << "replace with movie name" << " with rating " << std::fixed << std::setprecision(1) << "replace with movie rating" << endl;
+    //cout << "Best movie with prefix " << "<replace with prefix>" << " is: " << "replace with movie name" << " with rating " << std::fixed << std::setprecision(1) << "replace with movie rating" << endl;
 
+    for(size_t i = 0; i < best.size(); i++){
+        cout << "Best movie with prefix " << bestPrefixes[i] << " is: " << best[i].name << " with rating " << best[i].rating << "\n";
+    }
+    
     return 0;
 }
 
